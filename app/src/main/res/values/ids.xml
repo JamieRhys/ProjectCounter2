@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Counter IDs -->
+    <item name="layout_counter" type="id" />
+    <item name="container_values" type="id" />
+    <item name="container_buttons" type="id" />
+    <item name="tv_counter_name" type="id" />
+    <item name="tv_counter_value" type="id" />
+    <item name="button_inc" type="id" />
+    <item name="button_dec" type="id" />
+</resources>

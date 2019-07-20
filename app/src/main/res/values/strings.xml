@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Project Counter</string>
+    <string name="app_name">Knit Counter</string>
+
+    <!-- New Project Intent -->
+    <string name="tv_new_project_title">Add New Project</string>
+    <string name="tv_new_project_name">Project Name</string>
+    <!-- End of new Project Intent -->
+
+    <!-- Project View Intent -->
+    <string name="tv_project_name">Project Name</string>
+    <string name="tv_global_counter">Global Counter</string>
+    <string name="tv_project_time">00:00:00</string>
+    <string name="button_project_time_start">Start</string>
+    <string name="button_project_time_stop">Stop</string>
+
+    <!-- Universal -->
+    <string name="button_create">Create</string>
+    <string name="button_inc">+</string>
+    <string name="button_dec">-</string>
 </resources>
