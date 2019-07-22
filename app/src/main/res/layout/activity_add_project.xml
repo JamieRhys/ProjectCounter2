@@ -59,7 +59,8 @@
                 android:ems="10"
                 android:id="@+id/et_add_project"
                 android:background="@drawable/background_text_edit"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:maxLength="11"/>
 
         <Button
                 android:text="@string/button_create"
@@ -69,7 +70,8 @@
                 android:layout_margin="10dp"
                 android:onClick="createProject"
                 android:background="@color/colorPrimary"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"/>
 
         <Button
                 android:text="X"
@@ -77,7 +79,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/button_add_project_close"
                 android:layout_margin="50dp"
-                android:background="@drawable/background_circle_global"
+                android:background="@drawable/background_circle_danger_button"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
                 android:onClick="closeIntent"/>

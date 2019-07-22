@@ -1,11 +1,13 @@
 package com.jre.projectcounter;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import com.jre.projectcounter.intent.AddProject;
+import com.jre.projectcounter.project.Counter;
 import com.jre.projectcounter.project.Project;
 import com.jre.projectcounter.project.ProjectManager;
 import com.jre.projectcounter.utils.KCColor;
@@ -25,19 +27,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        LinearLayout container_project_stack = findViewById(R.id.container_project_stack);
+
         KCColor.getInstance().initialiseBackgroundBorders(this);
-        mProjectManager = new ProjectManager();
-
-        LinearLayout layout_root = findViewById(R.id.layout_main_activity_root);
-
-        Project project = new Project(
-                this,
-                this,
-                "Hello",
-                -1);
-        project.setOnClickListener(project);
-
-        layout_root.addView(project);
+        mProjectManager = new ProjectManager(this, this, container_project_stack);
     }
 
     /**
@@ -55,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == ProjectManager.ACTIVITY_REQUESTS.REQUEST_ADD_PROJECT) {
             if(resultCode == RESULT_OK) {
                 String projectName = data.getStringExtra("projectName");
-                System.out.println("HELLO: " + projectName);
+                mProjectManager.removeProjectButtons();
+                mProjectManager.addProject(projectName);
+                mProjectManager.createProjectButtons();
             }
         } else if (requestCode == ProjectManager.ACTIVITY_REQUESTS.REQUEST_PROJECT_VIEW) {
             if(resultCode == RESULT_OK) {

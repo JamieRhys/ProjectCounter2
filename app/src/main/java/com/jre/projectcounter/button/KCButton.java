@@ -43,6 +43,8 @@ public class KCButton extends LinearLayout implements OnClickListener {
         lp.setMargins(mLAYOUT_MARGIN[0], mLAYOUT_MARGIN[1], mLAYOUT_MARGIN[2], mLAYOUT_MARGIN[3]);
         setLayoutParams(lp);
 
+        setOrientation(LinearLayout.VERTICAL);
+
         setBackground(KCColor.getBackgroundBorder(mBackgroundID));
         setGravity(Gravity.CENTER);
     }

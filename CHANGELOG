@@ -15,3 +15,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - KCColor
 - KCButton
 - Created ability to see ProjectView and pass data.
+- Created Counter.
+-

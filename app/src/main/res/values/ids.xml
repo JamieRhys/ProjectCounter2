@@ -3,10 +3,10 @@
 
     <!-- Counter IDs -->
     <item name="layout_counter" type="id" />
-    <item name="container_values" type="id" />
-    <item name="container_buttons" type="id" />
+    <item name="container_counter_content" type="id" />
+    <item name="container_counter_buttons" type="id" />
     <item name="tv_counter_name" type="id" />
-    <item name="tv_counter_value" type="id" />
-    <item name="button_inc" type="id" />
-    <item name="button_dec" type="id" />
+    <item name="tv_counter_row" type="id" />
+    <item name="button_counter_inc" type="id" />
+    <item name="button_counter_dec" type="id" />
 </resources>

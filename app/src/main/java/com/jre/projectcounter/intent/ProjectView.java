@@ -21,7 +21,7 @@ public class ProjectView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_view);
 
-        mTV_ProjectName = findViewById(R.id.tv_project_view_name);
+        mTV_ProjectName = findViewById(R.id.tv_project_view_project_name);
 
         Intent i = this.getIntent();
         mProjectName = i.getStringExtra("projectName");
