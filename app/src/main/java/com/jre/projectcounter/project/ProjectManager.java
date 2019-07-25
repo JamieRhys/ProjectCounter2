@@ -7,7 +7,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.jre.projectcounter.MainActivity;
 import com.jre.projectcounter.utils.KCColor;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -113,7 +120,6 @@ public class ProjectManager extends AppCompatActivity {
 
     /**
      * Creates our project buttons and then displays them.
-     * TODO: mLayout_Main needs to be changed to the relevant layout once activity_main is designed.
      */
     public void createProjectButtons() {
         for(Map.Entry<Integer, Project> entry : mProjectMap.entrySet()) {
@@ -143,6 +149,88 @@ public class ProjectManager extends AppCompatActivity {
                     ((ViewGroup) entry.getValue().getParent()).removeView(entry.getValue());
                 }
             }
+        }
+    }
+
+    private boolean hasProjectMapChanged() { return
+        mProjectMapPrevVal > mProjectMap.size() ||
+                mProjectMapPrevVal < mProjectMap.size();
+    }
+
+    public final boolean isProjectMapInitialised() { return mProjectMap.size() > 0; }
+
+    public void saveProjects() { writeJSONStream(); }
+
+    public void loadProjects() { readJSONStream(); }
+
+    private void writeJSONStream() {
+        if(mProjectMap.size() > 0) {
+            if(hasProjectMapChanged()) {
+                JSONObject root = new JSONObject();
+                JSONArray projects = new JSONArray();
+
+                for(Map.Entry<Integer, Project> entry : mProjectMap.entrySet()) {
+                    JSONObject project = new JSONObject();
+                    JSONObject projectDetails = new JSONObject();
+                    JSONArray projectTotal = new JSONArray();
+
+                    project.put("projectName", entry.getValue().getProjectName());
+
+                    projectDetails.put("backgroundID", entry.getValue().getBackgroundID());
+                    projectDetails.put("globalCurrentRow", entry.getValue().getGlobalCurrentRow());
+
+                    projectTotal.add(projectDetails);
+
+                    project.put("details", projectTotal);
+
+                    projects.add(project);
+                }
+
+                root.put("projects", projects);
+
+                try(FileWriter writer = new FileWriter(mMainContext.getFilesDir().getAbsolutePath() + "/" + "storage.json")) {
+                    writer.write(root.toJSONString());
+                    writer.flush();
+                } catch(IOException e) {
+
+                }
+            }
+        }
+    }
+
+    private void readJSONStream() {
+        JSONParser parser = new JSONParser();
+
+        try(FileReader reader = new FileReader(mMainContext.getFilesDir().getAbsolutePath() + "/" + "storage.json")) {
+            JSONObject jsonObj = (JSONObject) parser.parse(reader);
+            JSONArray projectRoot = (JSONArray) jsonObj.get("projects");
+
+            for(int i = 0; i < projectRoot.size(); i++) {
+                JSONObject obj = (JSONObject) projectRoot.get(i);
+                JSONArray arr = (JSONArray) obj.get("details");
+
+                String name = (String) obj.get("projectName");
+                long globalCurrentRow = 0;
+                long backgroundID = -1;
+
+                for(int j = 0; j < arr.size(); j++) {
+                    JSONObject projectDetails = (JSONObject) arr.get(j);
+
+                    globalCurrentRow = (long) projectDetails.get("globalCurrentRow");
+                    backgroundID = (long) projectDetails.get("backgroundID");
+                }
+
+                addProject(name,
+                        (int) globalCurrentRow,
+                        new HashMap<Integer, Counter>(), /* TODO: Change this when you've implemented counter map from save. */
+                        (int) backgroundID);
+            }
+
+            createProjectButtons();
+        } catch(IOException e) {
+
+        } catch(ParseException e) {
+
         }
     }
 }

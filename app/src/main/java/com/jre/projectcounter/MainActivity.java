@@ -11,6 +11,7 @@ import com.jre.projectcounter.project.Counter;
 import com.jre.projectcounter.project.Project;
 import com.jre.projectcounter.project.ProjectManager;
 import com.jre.projectcounter.utils.KCColor;
+import com.jre.projectcounter.utils.KCFiles;
 
 /** MainActivity is our entry point and houses our project icons and anything else we need.
  * It also launches all other intents we are using.
@@ -21,6 +22,7 @@ import com.jre.projectcounter.utils.KCColor;
  */
 public class MainActivity extends AppCompatActivity {
     private ProjectManager mProjectManager;
+    private String mSaveFilePath = "storage.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,24 @@ public class MainActivity extends AppCompatActivity {
 
         KCColor.getInstance().initialiseBackgroundBorders(this);
         mProjectManager = new ProjectManager(this, this, container_project_stack);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(KCFiles.isFilePresent(this, mSaveFilePath)) {
+            if(!mProjectManager.isProjectMapInitialised()) {
+                mProjectManager.loadProjects();
+            }
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        mProjectManager.saveProjects();
     }
 
     /**

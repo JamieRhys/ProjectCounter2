@@ -67,6 +67,7 @@ public class Project extends KCButton {
         mMainActivity.startActivityForResult(i, ProjectManager.ACTIVITY_REQUESTS.REQUEST_PROJECT_VIEW);
     }
 
+    /** Initialises our icon to display in the intended container */
     private void initialiseIcon() {
         this.setClickable(true);
 
@@ -83,4 +84,9 @@ public class Project extends KCButton {
 
         this.addView(mTV_ProjectName);
     }
+
+    public final String getProjectName() { return mProjectName; }
+
+    public final int getGlobalCurrentRow() { return mGlobalCounterRow; }
+
 }
