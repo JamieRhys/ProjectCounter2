@@ -76,7 +76,8 @@
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:background="@drawable/background_circle_global"
-                    android:textSize="24sp"/>
+                    android:textSize="24sp"
+                    android:onClick="incGlobalCounter"/>
 
             <LinearLayout
                     android:orientation="vertical"
@@ -118,7 +119,7 @@
                     android:textStyle="bold"
                     android:background="@drawable/background_circle_global"
                     android:textSize="24sp"
-                    />
+                    android:onClick="decGlobalCounter"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -154,7 +155,7 @@
                 android:textStyle="bold"
                 android:background="@drawable/background_circle_global"
                 android:textSize="24sp"
-                />
+                android:onClick="addCounterIntent"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

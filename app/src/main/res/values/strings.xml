@@ -21,6 +21,14 @@
     <string name="button_project_time_start">Start</string>
     <string name="button_project_time_stop">Stop</string>
 
+    <!-- New Counter Intent -->
+    <string name="tv_add_counter_header">Add New Counter</string>
+    <string name="tv_add_counter_label">Counter Name</string>
+    <string name="tv_add_counter_inc_by">Increment Counter By</string>
+    <string name="tv_add_counter_is_global">Attached to Global Counter?</string>
+    <string name="tb_add_counter_is_global_true">Yes</string>
+    <string name="tv_add_counter_is_global_false">No</string>
+
     <!-- Universal -->
     <string name="button_create">Create</string>
     <string name="button_inc">+</string>

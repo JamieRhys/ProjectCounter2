@@ -9,6 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".intents.ProjectView">
+        </activity>
+        <activity android:name=".intent.AddCounter">
+        </activity>
         <activity android:name=".intent.ProjectView">
         </activity>
         <activity android:name=".intent.AddProject">
