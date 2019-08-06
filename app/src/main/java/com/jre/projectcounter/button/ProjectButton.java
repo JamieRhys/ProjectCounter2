@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.jre.projectcounter.MainActivity;
 import com.jre.projectcounter.intents.ProjectView;
 import com.jre.projectcounter.project.Project;
+import com.jre.projectcounter.project.ProjectManager;
 
 /**
  * ProjectButton is exactly that, it allows us to pass
@@ -30,8 +31,8 @@ public class ProjectButton extends PCIcon {
      * @param context the context
      * @param project the project
      */
-    public ProjectButton(Context context, final MainActivity activity, final Project project) {
-        super(context);
+    public ProjectButton(Context context, final MainActivity activity, final Project project, final int backgroundID) {
+        super(context, backgroundID);
         mContext = context;
         mActivity = activity;
         mProject = project;
@@ -61,7 +62,7 @@ public class ProjectButton extends PCIcon {
     public void onClick(View v) {
         Intent i = new Intent(mContext, ProjectView.class);
         i.putExtra("project", mProject);
-        mActivity.startActivityForResult(i, 1);
+        mActivity.startActivityForResult(i, ProjectManager.ACTIVITY_REQUESTS.REQUEST_PROJECT_VIEW);
     }
 
     /**

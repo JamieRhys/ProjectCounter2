@@ -159,17 +159,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/container_project_stack"
-                android:gravity="center">
-
-            <Button
-                    android:text="Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteY="189dp"
-                    tools:layout_editor_absoluteX="103dp"
-                    android:id="@+id/button"
-                    android:onClick="launchProject"/>
-        </LinearLayout>
+                android:gravity="center"/>
     </ScrollView>
 
     <LinearLayout
@@ -206,7 +196,8 @@
                 android:textColor="@color/colorWhite"
                 android:background="@color/colorAccent"
                 android:layout_margin="10dp"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:onClick="settings"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

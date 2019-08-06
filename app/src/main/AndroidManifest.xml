@@ -11,11 +11,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".intents.ProjectView">
         </activity>
-        <activity android:name=".intent.AddCounter">
-        </activity>
-        <activity android:name=".intent.ProjectView">
-        </activity>
-        <activity android:name=".intent.AddProject">
+        <activity android:name=".intents.AddProject">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
